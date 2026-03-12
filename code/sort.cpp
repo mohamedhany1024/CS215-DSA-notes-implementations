@@ -54,10 +54,25 @@ void bubble_sort(vector<int>& v) {
     }
 }
 
+// Best Case complexity: O(n)
+// Worst Case complexity: O(n^2)
+void bubble_sort2(vector<int>& v) {
+    bool swapped = false;
+    for(int i=0; i<v.size()-1; i++) {
+        for(int j=v.size()-1; j != i; j--) {
+            if (v[j] < v[j-1]) {
+                swap(v[j], v[j-1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) {break;}
+    }
+}
+
 int main() {
 
     vector <int> v1 = {5, 3, 2, 7, 4, 25, 1, 16};
-    bubble_sort(v1);
+    bubble_sort2(v1);
     for (auto& x : v1) {
         cout << x <<" "; 
     }
