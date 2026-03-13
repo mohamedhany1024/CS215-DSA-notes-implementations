@@ -3,12 +3,13 @@ Two types of sorting algos
 2. Subquadratic (QuickSort, Merge Sort, Shell Sort, Heap Sort)
 ## Complexity
 
-|       | Selection | Insertion | Bubble | Shell | Merge | Quick |
-| ----- | --------- | --------- | ------ | ----- | ----- | ----- |
-| worst | O(n^2)    | O(n^2)    | O(n^2) |       |       |       |
-| best  | O(n^2)    | O(n )     | O(n)   |       |       |       |
+|         | Selection | Insertion | Bubble | Shell      | Merge | Quick                                   |
+| ------- | --------- | --------- | ------ | ---------- | ----- | --------------------------------------- |
+| worst   | O(n^2)    | O(n^2)    | O(n^2) | O(n^2)     |       | O(n^2)                                  |
+| best    | O(n^2)    | O(n )     | O(n)   | O(n log n) |       | O(n log(n))                             |
+| average |           |           |        | O(n^1.5)   |       | O(n log(n)) (depending on pivot choice) |
 
-## Comparison based sorting as Decision Trees
+## Comparison based sorting as Decision Trees (very important, look in lecture slides too)
 
 We can represent a comparison based sorting algo as a decision tree.
 - The terminal nodes in this tree represent results of the algorithm as permutations of the array to be sorted

@@ -11,6 +11,6 @@ A special type of binary tree where all levels are completely filled. Each node 
 $$N_{total} = \sum_{i=0}^{n-1} 2^i = 1 + 2^1 + 2^2 + 2^3 ... + 2^{n-1} = 2^n - 1$$(geometric series where a = 1, r = 2)
 where n is the no. levels, N is the total no. nodes in the entire tree
 
-- no. terminal nodes is $2^{n-1}$ where n is no. levels (basically it's the number of nodes in the last level, n-1 is the last level's index)
+- no. terminal nodes is $2^{n-1}$ where n is no. levels (basically we are calculating the number of nodes in the last level, n-1 is the last level's index)
 - no. non-terminal nodes is Total no. nodes - terminal nodes = $(2^n -1) - 2^{n-1} = 2^{n-1}$ (by factoring $2^{n-1}$)
 - 
