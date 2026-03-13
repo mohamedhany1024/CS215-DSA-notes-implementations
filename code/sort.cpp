@@ -56,6 +56,7 @@ void bubble_sort(vector<int>& v) {
 
 // Best Case complexity: O(n)
 // Worst Case complexity: O(n^2)
+
 void bubble_sort2(vector<int>& v) {
     bool swapped = false;
     for(int i=0; i<v.size()-1; i++) {
@@ -69,13 +70,99 @@ void bubble_sort2(vector<int>& v) {
     }
 }
 
+int median_of_three(int l, int r, vector<int>& v) {
+    /*int min = v[l];
+    int minIdx = l;
+    vector<int> v2 = {v[l], v[(l+r)/2], v[r]};
+
+    for(int i=0; i<v2.size(); i++) {
+        if (v2[i] < min) {
+            min = v2[i];
+            minIdx = i;
+        }
+    }
+    return minIdx+l;*/
+    vector<pair<int, int>> v2 = {{v[l], l}, {v[(l+r)/2], (l+r)/2}, {v[r], r}};
+    int minIdx = 0;
+    int maxIdx = 2;
+    int min = v[l];
+    int max = v[r];
+
+    for (int i=0; i<v2.size(); i++)
+    {
+        if (v2[i].first < min)
+        {
+            min = v2[i].first;
+            minIdx = i;
+        }
+
+        if (v2[i].first > max)
+        {
+            max = v2[i].first;
+            maxIdx = i;
+        }
+    }
+
+    swap(v2[maxIdx], v2[2]);
+    swap(v2[minIdx], v2[0]);
+
+
+    return v2[1].second;
+}
+
+int partition(int l, int r, vector<int>& v) {
+    int pivotIdx = median_of_three(l, r, v);
+    int pivot = v[pivotIdx];
+    //int pivotIdx = l;
+    //int pivot = v[pivotIdx];
+
+    //ensure our chosen pivot from the method is at the left.
+    swap(v[l], v[pivotIdx]);
+    pivotIdx = l;
+
+    int i=l, j=r;
+    while (i < j) {
+
+        while (v[i] <= pivot && i <= r) {
+            i++;
+        }
+
+        while (v[j] >= pivot && j > l) {
+            j--;
+        }
+
+        if (i < j) {
+            swap(v[i], v[j]);
+        }
+        
+    }
+    v[pivotIdx] = v[j];
+    v[j] = pivot;
+    return j;
+}
+
+void quick_sort(int l, int r, vector<int>& v) {
+    if (l<r){
+        int mid = partition(l, r, v);
+
+        quick_sort(l, mid-1, v);
+        quick_sort(mid+1, r, v);
+    } else {
+        return;
+    }
+}
+
+vector<int> merge()
+
 int main() {
 
     vector <int> v1 = {5, 3, 2, 7, 4, 25, 1, 16};
-    bubble_sort2(v1);
-    for (auto& x : v1) {
+    vector <int> v2= {15, 31, 52, 64, 17, 43, 27, 19, 68, 41, 63, 2, 78, 14, 12, 67, 7, 98, 54, 39, 59, 73, 79, 87, 61, 36, 74, 66, 44, 92, 38, 34, 6, 83, 51, 57, 69, 33, 13, 49, 4, 90, 99, 1, 18, 89, 42, 97, 82, 40, 46, 48, 93, 62, 50, 53, 29, 8, 30, 94, 9, 5, 100, 25, 72, 24, 45, 86, 26, 35, 32, 37, 11, 60, 55, 80, 76, 77, 81, 47, 95, 58, 85, 10, 28, 65, 16, 20, 91, 75, 70, 56, 84, 3, 88, 96, 71, 21, 22, 23};
+    quick_sort(0, v2.size()-1, v2);
+    for (auto& x : v2) {
         cout << x <<" "; 
     }
     cout << endl;
+    cout << isSorted(v2);
     return 0;
-} 
+}
