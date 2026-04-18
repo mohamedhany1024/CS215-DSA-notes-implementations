@@ -12,6 +12,23 @@ Two types of sorting algos
 |            | Selection | Insertion | Bubble | Shell | Merge | Quick |
 | ---------- | --------- | --------- | ------ | ----- | ----- | ----- |
 | Complexity | O(1)      | O(1)      | O(1)   | O(1)  | O(n)  | O(1)  |
+## Quicksort
+1. we choose a "pivot" (an element in the array, where we make all the numbers to it's left smaller, and all numbers to it's right bigger)
+2. after we choose our pivot and push the numbers to it's left and right (we call this the partition function), the array will be split into two parts, the part on the pivot's right and the part on it's left.
+3. we recursively apply quicksort to these parts, the parts get smaller and smaller reflecting the divide and conquer nature of the algorithm.
+4. eventually when we are done with all the parts, the array will be fully sorted
+#### Remarks
+- if our chosen pivot happens to be situated at the middle of the array after we are done with the partition all the time, quick sort will have the same complexity as merge sort
+- if our chosen pivot happens to be situated at the left all the time, the complexity will be O(n^2)
+- 
+
+### Merge Sort
+1. we split the array into two halves
+2. we "sort" each half independently then we "merge" them together
+	1. when merging, we have two pointers at the two halves, the pointers start at index 0. we add the smaller element between the two halves into our result array. we advance the pointer of the subarray we just added from, keep doing this until the two halves are done
+3. we recursively split --> sort --> merge
+4. if a subarray has length 1, it's already sorted, this is our base case
+5. if a subarray has length 2. we can sort it in O(1) this is another base case
 
 ## Comparison based sorting as Decision Trees (very important, look in lecture slides too)
 
@@ -49,7 +66,7 @@ Non-comparison based sort
  2. iterate over C and record frequency of A
  3. apply prefixSum to C
 4. ```
-    for i = n; i>= 2; i--
+    for i = n; i>= 1; i--
 	    B(C[A[i]]) = A[i]
 	    C[A[i]] -= 1
     ```
