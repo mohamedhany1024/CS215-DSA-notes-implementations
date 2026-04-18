@@ -20,7 +20,7 @@ Two types of sorting algos
 #### Remarks
 - if our chosen pivot happens to be situated at the middle of the array after we are done with the partition all the time, quick sort will have the same complexity as merge sort
 - if our chosen pivot happens to be situated at the left all the time, the complexity will be O(n^2)
-- 
+- doesn't require additional arrays (Memory Complexity O(1))
 
 ### Merge Sort
 1. we split the array into two halves
@@ -29,6 +29,8 @@ Two types of sorting algos
 3. we recursively split --> sort --> merge
 4. if a subarray has length 1, it's already sorted, this is our base case
 5. if a subarray has length 2. we can sort it in O(1) this is another base case
+#### Remarks
+- Requires an additional array (Memory Complexity O(n))
 
 ## Comparison based sorting as Decision Trees (very important, look in lecture slides too)
 

@@ -158,6 +158,7 @@ void merge(int l, int r, vector<int>& a) {
     vector<int> b;
     b.reserve((r-l)+1);
    
+    //loop that does initial merging
     while(i<=mid && j<=r) {
         if (a[i]<=a[j]) {
             b.push_back(a[i]);
@@ -171,7 +172,8 @@ void merge(int l, int r, vector<int>& a) {
             continue;
         }
     }
-
+    //if one of the subarrays is finished before the other
+    // we need to add the rest of the other to our result 'b'
     while(i<=mid) {
         b.push_back(a[i]);
         i++;
@@ -182,6 +184,7 @@ void merge(int l, int r, vector<int>& a) {
         j++;
     }
 
+    //set the range l : r in 'a' to 'b'
     i=0;
     int k = 0;
     for(int k=l; k<=r; k++) {
